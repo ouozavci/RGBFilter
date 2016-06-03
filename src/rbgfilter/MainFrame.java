@@ -26,6 +26,8 @@ public class MainFrame extends javax.swing.JFrame {
     BufferedImage filtered = null;
     File file = null;
     
+    
+    //Global 2D matrix of image to process 
     int[][] mat = null;
     /**
      * Creates new form MainFrame
@@ -212,6 +214,7 @@ public class MainFrame extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    //When you Click Open to choose an image file
     private void btnOpenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOpenActionPerformed
         // TODO add your handling code here:
         JFileChooser fchooser = new JFileChooser();
@@ -232,6 +235,14 @@ public class MainFrame extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_btnOpenActionPerformed
+        /*This method get all RGB values from BufferedImage and 
+          fills the mat matrix with those values
+          It reads the file for every time you use this method
+          because in other cases i faced with some logic error but i 
+          couldn't solve it without using it 
+          However i still think this is not a good way there must be 
+          another solution which is more practically...
+    */
     private void getRGBfromImage() throws IOException{
         img = ImageIO.read(file);
         if(img!=null){
@@ -245,6 +256,12 @@ public class MainFrame extends javax.swing.JFrame {
                 }   
         }
     }
+    
+    /*  This is the filterRGB method which adds the r g b values 
+        to every pixel in image.r g and b can be positive or negative values
+        in range of [-255,255]. So you can also decrease the r g b values
+        This is a quite simple filter
+    */
     private void filterRGB(int r,int g,int b) throws IOException{
          getRGBfromImage();
         if(img!=null && mat!=null){
@@ -277,7 +294,11 @@ public class MainFrame extends javax.swing.JFrame {
             setImageFiltered();
         }
     }
-    
+    /*
+        This method assigns the img using values in mat[][]
+        and get a new image most probably a filtered image
+        So, basically it turns the matrix to BufferedImage.
+    */
     private void setImageFiltered(){
         if(mat!=null){
             int h = img.getHeight();
