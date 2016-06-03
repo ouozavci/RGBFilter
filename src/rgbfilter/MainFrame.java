@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package rbgfilter;
+package rgbfilter;
 
 import java.awt.Color;
 import java.awt.image.BufferedImage;
@@ -62,7 +62,6 @@ public class MainFrame extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(300, 200));
-        setPreferredSize(new java.awt.Dimension(640, 480));
         setSize(new java.awt.Dimension(640, 480));
         getContentPane().setLayout(new java.awt.GridLayout(1, 1));
 
